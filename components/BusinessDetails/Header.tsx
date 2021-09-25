@@ -22,7 +22,12 @@ const Header = () => {
     );
   }, [business]);
   return (
-    <View>
+    <View
+      style={[
+        tw`shadow pb-1`,
+        { borderBottomWidth: 0.5, borderColor: "lightgrey" },
+      ]}
+    >
       <View>
         <Image
           source={{ uri: business?.image_url }}

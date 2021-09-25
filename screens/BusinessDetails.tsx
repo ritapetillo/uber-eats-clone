@@ -1,7 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { useSelector } from "react-redux";
 import Header from "../components/BusinessDetails/Header";
+import MenuItem from "../components/BusinessDetails/MenuItem";
+import { MenuItem as MI, menuItems } from "../data/menuItems";
 import { selectedBusiness } from "../slices/restaurantSlice";
 import { RootState } from "../store";
 
@@ -14,6 +16,11 @@ const BusinessDetails = () => {
   return (
     <View>
       <Header />
+      <FlatList
+        data={menuItems}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={(item) => <MenuItem item={item.item} />}
+      />
     </View>
   );
 };
