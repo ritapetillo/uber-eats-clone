@@ -12,6 +12,8 @@ import tw from "tailwind-react-native-classnames";
 import { Variation } from "../data/menuItems";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
+import { addItem, ItemOrder } from "../slices/orderSlice";
+import { useDispatch } from "react-redux";
 
 const VariationMenu = ({
   variation: { id, name, cost },
@@ -59,6 +61,18 @@ const ItemMenuScreen = ({ route, navigation }: any) => {
   const { item } = route.params;
   const [selected, setSelected] = useState(1);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const setOrder = () => {
+    const orderItem: ItemOrder = {
+      name: item.name,
+      id: item.id,
+      quantity,
+      price: item.price * quantity,
+      variation: selected,
+    };
+    dispatch(addItem(orderItem));
+    navigation.goBack();
+  };
   return (
     <View style={{ flex: 1 }}>
       <View style={tw`flex-none`}>
@@ -114,9 +128,7 @@ const ItemMenuScreen = ({ route, navigation }: any) => {
       <View style={tw`mt-auto flex-none h-20 items-center mb-3`}>
         <TouchableOpacity
           style={tw`bg-black p-4 w-80`}
-          onPress={() => {
-            navigation.goBack();
-          }}
+          onPress={() => setOrder()}
         >
           <Text style={tw`text-white text-center text-base`}>
             Add {quantity} to Cart

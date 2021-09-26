@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import BusinessDetails from "./screens/BusinessDetails";
 import ItemMenuScreen from "./screens/ItemMenuScreen";
+import CheckoutScreen from "./screens/CheckoutScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,13 @@ export default function App() {
           <Stack.Screen
             name="Item"
             component={ItemMenuScreen}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Checkout"
+            component={CheckoutScreen}
             options={{
               headerShown: false,
             }}
