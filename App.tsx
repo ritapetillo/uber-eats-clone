@@ -9,6 +9,7 @@ import Tabs from "./Navigation/Tabs";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import BusinessDetails from "./screens/BusinessDetails";
+import ItemMenuScreen from "./screens/ItemMenuScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,6 +28,13 @@ export default function App() {
           <Stack.Screen
             name="Details"
             component={BusinessDetails}
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="Item"
+            component={ItemMenuScreen}
             options={{
               headerShown: false,
             }}

@@ -3,8 +3,10 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import tw from "tailwind-react-native-classnames";
 import { Ionicons, AntDesign } from "@expo/vector-icons";
-import Location from "../../interfaces/location";
 import { useDispatch, useSelector } from "react-redux";
+// @ts-ignore
+import { GOOGLE_API_KEY } from "@env";
+
 import {
   fetchRestaurants,
   setLocation as setLocationSearch,
